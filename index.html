@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#080a12"><title>CloudPlayuz — UFC Cloud Play</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#080a12;color:#fff;font-family:Arial,system-ui,sans-serif}button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+#home{min-height:100dvh;background:radial-gradient(ellipse at 50% 0,#182e50 0,#080a12 58%)}header{height:64px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff1b;background:#090d18}.brand{font-size:22px;font-weight:900}.brand span{color:#9a72ff}.beta{font-size:10px;letter-spacing:1.5px;color:#8ca7cc}.hero{padding:38px 20px 26px;max-width:850px;margin:auto}.eyebrow{color:#8fbcff;font-size:11px;letter-spacing:2px;font-weight:bold}.hero h1{font-size:clamp(36px,8vw,60px);line-height:1.02;margin:12px 0}.hero p{color:#b4c2d8;line-height:1.6;max-width:520px}.games{padding:10px 18px 36px;max-width:850px;margin:auto}.games h2{font-size:20px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.game{min-height:154px;text-align:left;padding:16px;border:1px solid #35435c;border-radius:15px;background:linear-gradient(145deg,#1b2b45,#101522);position:relative;overflow:hidden}.game:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:#5d83ff20;right:-30px;top:25px}.glove{font-size:36px}.game strong{display:block;font-size:18px;margin:7px 0}.game small{color:#9eb0ca}.game button{margin-top:12px;background:#416ff1;border-radius:9px;padding:8px 13px;border:0;font-weight:bold}.notice{margin:0 18px 25px;padding:14px;border-radius:12px;border:1px solid #735a2c;background:#211b12;color:#e9d7b4;font-size:13px;line-height:1.5;max-width:814px}
+#play{display:none;height:100dvh;width:100%;background:#03050a;position:fixed;inset:0;overflow:hidden}.video{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,#24496d 0,#101b2c 43%,#03050a 78%)}.lights{position:absolute;inset:0 0 auto;height:30%;background:repeating-linear-gradient(90deg,transparent 0 8%,#168cff30 8.5% 9%,transparent 9.5% 17%);filter:blur(9px)}.cage{position:absolute;width:min(95vw,95vh);aspect-ratio:1;border:7px solid #a8bdd855;border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%) perspective(500px) rotateX(57deg);box-shadow:0 0 0 7px #1c2b40,0 0 45px #238bff55,inset 0 0 45px #000}.cage:after{content:"";position:absolute;inset:12%;border:2px solid #c8d7e544;border-radius:50%}.fight-label{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:2px;color:#d7e8ff;background:#050a14a8;padding:7px 12px;border:1px solid #ffffff30;border-radius:20px;white-space:nowrap}.bars{position:absolute;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;gap:25px}.barwrap{width:35%;max-width:250px;font-size:10px;text-shadow:0 1px 4px #000}.bar{height:8px;background:#526074;border:1px solid #ffffff66;border-radius:10px;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;width:100%;background:#a4e45b}.barwrap:last-child{text-align:right}.barwrap:last-child i{margin-left:auto;background:#f4bb43}
+.back{position:absolute;z-index:8;top:55px;left:12px;background:#111c2ccc;border:1px solid #ffffff55;border-radius:20px;padding:7px 12px;font-size:12px}
+.controls{position:absolute;inset:0;pointer-events:none}.stick{position:absolute;bottom:7%;left:5%;width:clamp(112px,25vw,170px);height:clamp(112px,25vw,170px);border-radius:50%;background:#a9c9ee20;border:2px solid #e5f2ff75;box-shadow:inset 0 0 20px #fff1;pointer-events:auto;backdrop-filter:blur(2px)}.stick:before{content:"";position:absolute;width:38%;height:38%;left:31%;top:31%;border-radius:50%;background:#c6dcf155;border:2px solid #ffffff9c}.cluster{position:absolute;right:4%;bottom:5%;width:clamp(154px,35vw,230px);height:clamp(154px,35vw,230px);pointer-events:auto}.ps{position:absolute;width:27%;height:27%;border-radius:50%;background:#17243b99;border:2px solid #dceaffaa;color:#f5f8ff;font-weight:bold;font-size:clamp(14px,4vw,22px);text-shadow:0 1px 4px #000;box-shadow:0 3px 10px #0008;backdrop-filter:blur(3px)}.tri{top:0;left:36%}.circ{top:36%;right:0}.cross{bottom:0;left:36%}.square{top:36%;left:0}.shoulders{position:absolute;top:10%;left:4%;right:4%;display:flex;justify-content:space-between;pointer-events:auto}.shoulders button{background:#101a2dcc;border:1px solid #dceaff77;border-radius:9px;padding:7px 10px;font-size:11px;font-weight:bold}.hint{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:9px;color:#d3dfef99;white-space:nowrap}
+#toast{display:none;position:absolute;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);background:#08111fdd;border:1px solid #ffffff66;padding:12px 16px;border-radius:12px;font-size:13px}
+@media(orientation:portrait){#play:fullscreen .fight-label:after{content:" · Telefonni gorizontal aylantiring"}}
+@media(max-width:430px){.grid{grid-template-columns:1fr}.game{min-height:135px}}
+</style></head>
+<body>
+<div id="home">
+<header><div class="brand">☁ Cloud<span>Playuz</span></div><div class="beta">UFC CLOUD · BETA</div></header>
+<section class="hero"><div class="eyebrow">BULUTLI O‘YINLAR PLATFORMASI</div><h1>UFC janglari.<br><span style="color:#a17bff">Telefoningizda.</span></h1><p>O‘yinlar katalogini tanlang va CloudPlayuz boshqaruv maketini ko‘ring. Hozircha bu demo interfeys — haqiqiy o‘yin oqimi ulanmagan.</p></section>
+<section class="games"><h2>O‘yinlar kutubxonasi</h2><div class="grid">
+<article class="game"><div class="glove">🥊</div><strong>UFC 2</strong><small>PS4 · Xbox One</small><br><button onclick="launch('UFC 2')">Ochish</button></article>
+<article class="game"><div class="glove">🥊</div><strong>UFC 3</strong><small>PS4 · Xbox One</small><br><button onclick="launch('UFC 3')">Ochish</button></article>
+<article class="game"><div class="glove">🥊</div><strong>UFC 4</strong><small>PS4 · Xbox</small><br><button onclick="launch('UFC 4')">Ochish</button></article>
+<article class="game"><div class="glove">🥊</div><strong>UFC 5</strong><small>PS5 · Xbox Series X|S</small><br><button onclick="launch('UFC 5')">Ochish</button></article>
+</div></section>
+<div class="notice"><b>Eslatma:</b> Bu bepul vizual prototip. “Ochish” tugmasi PS5 Remote Play uslubidagi sensorli boshqaruv maketini ko‘rsatadi, ammo haqiqiy UFC o‘yini ishlamaydi. Haqiqiy streaming uchun o‘yin ishlaydigan mos qurilma, litsenziya va server kerak.</div>
+</div>
+<div id="play">
+<div class="video"><div class="lights"></div><div class="cage"></div></div>
+<div class="fight-label" id="gameTitle">UFC CLOUD PLAY · DEMO</div>
+<div class="bars"><div class="barwrap">PLAYER 1<div class="bar"><i></i></div></div><div class="barwrap">OPPONENT<div class="bar"><i></i></div></div></div>
+<button class="back" onclick="closePlay()">← Katalog</button>
+<div class="controls">
+<div class="shoulders"><button onclick="tap('L1')">L1</button><button onclick="tap('L2')">L2</button><button onclick="tap('R2')">R2</button><button onclick="tap('R1')">R1</button></div>
+<div class="stick" onclick="tap('Joystick')"></div>
+<div class="cluster"><button class="ps tri" onclick="tap('△')">△</button><button class="ps circ" onclick="tap('○')">○</button><button class="ps cross" onclick="tap('×')">×</button><button class="ps square" onclick="tap('□')">□</button></div>
+<div class="hint">Chapda harakat · O‘ngda PS tugmalari · Demo boshqaruv</div>
+</div><div id="toast"></div>
+</div>
+<script>
+function launch(name){document.getElementById('home').style.display='none';document.getElementById('play').style.display='block';document.getElementById('gameTitle').textContent=name+' · CLOUDPLAYUZ DEMO';try{document.getElementById('play').requestFullscreen?.()}catch(e){}}
+function closePlay(){if(document.fullscreenElement)document.exitFullscreen?.();document.getElementById('play').style.display='none';document.getElementById('home').style.display='block'}
+function tap(key){let t=document.getElementById('toast');t.textContent=key+' — demo tugmasi';t.style.display='block';clearTimeout(window.tm);window.tm=setTimeout(()=>t.style.display='none',900)}
+</script></body></html>
